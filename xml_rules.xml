@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<rules>
+  <rule name="node">
+    <production>
+		<keyword token="&lt;" />
+        <literal>
+          <range>A..Z</range>
+          <range>a..z</range>
+		  <range>0..9</range>
+        </literal>
+		<rule_reference ruleName="attributes" optional="true" />
+		<keyword token="/&gt;" />
+    </production>
+    <production>
+		<keyword token="&lt;" />
+        <literal>
+          <range>A..Z</range>
+          <range>a..z</range>
+		  <range>0..9</range>
+        </literal>
+		<rule_reference ruleName="attributes" optional="true" />
+		<keyword token="&gt;" />
+		<rule_reference ruleName="text" optional="true" />
+		<rule_reference ruleName="nodes" optional="true" />
+		<keyword token="&lt;/" />
+        <literal>
+          <range>A..Z</range>
+          <range>a..z</range>
+		  <range>0..9</range>
+        </literal>
+		<keyword token="&gt;" />
+    </production>
+  </rule>
+  <rule name="text">
+	  <production>
+          <literal>
+            <range>A..Z</range>
+            <range>a..z</range>
+			<range>0..9</range>
+          </literal>		  
+	  </production>
+  </rule>
+  <rule name="nodes">
+	  <production>
+		  <rule_reference ruleName="node" optional="false" />
+		  <rule_reference ruleName="nodes" optional="true" />
+	  </production>
+  </rule>
+  <rule name="attribute">
+	  <production>
+		  <literal>
+			  <range>A..Z</range>
+			  <range>a..z</range>
+			  <range>0..9</range>
+		  </literal>
+		  <keyword token="=\&quot;" />
+		  <literal>
+			  <range>A..Z</range>
+			  <range>a..z</range>
+			  <range>0..9</range>
+		  </literal>
+		  <keyword token="\&quot;" />
+	  </production>
+  </rule>
+  <rule name="attributes">
+	  <production>
+		  <rule_reference ruleName="attribute" optional="true" />
+		  <rule_reference ruleName="attributes" optional="true" />
+	  </production>
+  </rule>
+</rules>

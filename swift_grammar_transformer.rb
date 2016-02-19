@@ -110,7 +110,7 @@ builder = Nokogiri::XML::Builder.new do |xml|
 								xml.rule_reference(:ruleName => node.xpath(".//text()").map {|i| i.text.gsub(TEXT_FIXING_REGEX, "")}.join(" ").strip, :optional => isOptional)
 							elsif node["class"] == "literal"
                 text = node.xpath(".//text()").map {|i| i.text.gsub(TEXT_FIXING_REGEX, "")}[0].gsub("\\", "\\\\\\").gsub("\"", "\\\"")
-								xml.keyword(:token => text)
+								xml.keyword(:token => text, :optional => isOptional)
 							else
 								text = node.xpath(".//text()").map {|i| i.text.gsub(/[^A-Za-z0-9\-\+\*\{\}\(\)\[\]\|_\.:?!,;%<>^&~=\/\ "]*/, "")}.join(" ")
                 literalMapping = LITERALMAPPINGS[text]

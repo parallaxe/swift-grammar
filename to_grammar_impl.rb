@@ -19,7 +19,7 @@ puts
 
 def mapToLiteral(literal)
   if literal.node_name == "not"
-    "literal(LogicalNotLiteralMatcherComposer(matcher: [CharacterRange(literals: #{literal.children.map{|l| mapToLiteral(l)}.compact.join(', ')})]))"
+    "LogicalNotLiteralMatcherComposer(matcher: [CharacterRange(literals: #{literal.children.map{|l| mapToLiteral(l)}.compact.join(', ')})])"
   elsif literal.node_name == "range"
     range = literal.text.split("..").map{|i| if i.start_with?("U+"); "UnicodeScalar(0x#{i[2..-1]})" else "\"#{i}\"" end }
     "LiteralType.RangeType(#{range[0]}...#{range[1]})"
@@ -45,7 +45,7 @@ doc.xpath("/rules").each do |rules|
           if "#{token}" == '"'
             token = '\\"'
           end
-          "keyword(\"#{token}\")"
+          "keyword(\"#{token}\", isOptional: #{child["optional"]})"
         elsif child.node_name == "rule_reference"
           "ruleRef(#{ruleName(child["ruleName"])}, isOptional: #{child["optional"]})"
         elsif child.node_name == "literal"
@@ -64,5 +64,15 @@ doc.xpath("/rules").each do |rules|
       puts "  <- ProductionBuilder() <+> #{nodes.join(" <+> ")}"
     end
     puts ").createRule())"
+  end
+end
+
+puts "var ruleTransitions : [Reference<Rule> : [Reference<Rule>]] = [:]"
+doc.xpath("/rules").each do |rules|
+  rules.xpath("./rule").each do |rule|
+    transitions = rule.xpath(".//rule_reference").map {|transition| "#{ruleName(transition["ruleName"].to_s)}"}
+    if transitions.count > 0
+      puts "ruleTransitions[#{ruleName(rule["name"])}] = [#{transitions.join(', ')}]"
+    end
   end
 end

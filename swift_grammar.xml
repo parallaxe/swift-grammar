@@ -3,35 +3,35 @@
   <rule name="statement">
     <production>
       <rule_reference ruleName="expression" optional="false"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="declaration" optional="false"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="loop-statement" optional="false"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="branch-statement" optional="false"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="labeled-statement" optional="false"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="control-transfer-statement" optional="false"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="defer-statement" optional="false"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="do-statement" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="compiler-control-statement" optional="false"/>
@@ -59,23 +59,23 @@
   </rule>
   <rule name="for-statement">
     <production>
-      <keyword token="for"/>
+      <keyword token="for" optional="false"/>
       <rule_reference ruleName="for-init" optional="true"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="false"/>
       <rule_reference ruleName="expression" optional="true"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="false"/>
       <rule_reference ruleName="expression" optional="true"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
     <production>
-      <keyword token="for"/>
-      <keyword token="("/>
+      <keyword token="for" optional="false"/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="for-init" optional="true"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="false"/>
       <rule_reference ruleName="expression" optional="true"/>
-      <keyword token=";"/>
+      <keyword token=";" optional="false"/>
       <rule_reference ruleName="expression" optional="true"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
   </rule>
@@ -89,10 +89,10 @@
   </rule>
   <rule name="for-in-statement">
     <production>
-      <keyword token="for"/>
-      <keyword token="case"/>
+      <keyword token="for" optional="false"/>
+      <keyword token="case" optional="true"/>
       <rule_reference ruleName="pattern" optional="false"/>
-      <keyword token="in"/>
+      <keyword token="in" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
       <rule_reference ruleName="where-clause" optional="true"/>
       <rule_reference ruleName="code-block" optional="false"/>
@@ -100,7 +100,7 @@
   </rule>
   <rule name="while-statement">
     <production>
-      <keyword token="while"/>
+      <keyword token="while" optional="false"/>
       <rule_reference ruleName="condition-clause" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
@@ -111,7 +111,7 @@
     </production>
     <production>
       <rule_reference ruleName="expression" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="condition-list" optional="false"/>
     </production>
     <production>
@@ -119,7 +119,7 @@
     </production>
     <production>
       <rule_reference ruleName="availability-condition" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
     </production>
   </rule>
@@ -129,7 +129,7 @@
     </production>
     <production>
       <rule_reference ruleName="condition" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="condition-list" optional="false"/>
     </production>
   </rule>
@@ -146,7 +146,7 @@
   </rule>
   <rule name="case-condition">
     <production>
-      <keyword token="case"/>
+      <keyword token="case" optional="false"/>
       <rule_reference ruleName="pattern" optional="false"/>
       <rule_reference ruleName="initializer" optional="false"/>
       <rule_reference ruleName="where-clause" optional="true"/>
@@ -161,12 +161,12 @@
   </rule>
   <rule name="optional-binding-head">
     <production>
-      <keyword token="let"/>
+      <keyword token="let" optional="false"/>
       <rule_reference ruleName="pattern" optional="false"/>
       <rule_reference ruleName="initializer" optional="false"/>
     </production>
     <production>
-      <keyword token="var"/>
+      <keyword token="var" optional="false"/>
       <rule_reference ruleName="pattern" optional="false"/>
       <rule_reference ruleName="initializer" optional="false"/>
     </production>
@@ -177,7 +177,7 @@
     </production>
     <production>
       <rule_reference ruleName="optional-binding-continuation" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="optional-binding-continuation-list" optional="false"/>
     </production>
   </rule>
@@ -192,9 +192,9 @@
   </rule>
   <rule name="repeat-while-statement">
     <production>
-      <keyword token="repeat"/>
+      <keyword token="repeat" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
-      <keyword token="while"/>
+      <keyword token="while" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
     </production>
   </rule>
@@ -211,7 +211,7 @@
   </rule>
   <rule name="if-statement">
     <production>
-      <keyword token="if"/>
+      <keyword token="if" optional="false"/>
       <rule_reference ruleName="condition-clause" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
       <rule_reference ruleName="else-clause" optional="true"/>
@@ -219,29 +219,29 @@
   </rule>
   <rule name="else-clause">
     <production>
-      <keyword token="else"/>
+      <keyword token="else" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
     <production>
-      <keyword token="else"/>
+      <keyword token="else" optional="false"/>
       <rule_reference ruleName="if-statement" optional="false"/>
     </production>
   </rule>
   <rule name="guard-statement">
     <production>
-      <keyword token="guard"/>
+      <keyword token="guard" optional="false"/>
       <rule_reference ruleName="condition-clause" optional="false"/>
-      <keyword token="else"/>
+      <keyword token="else" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
   </rule>
   <rule name="switch-statement">
     <production>
-      <keyword token="switch"/>
+      <keyword token="switch" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="switch-cases" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="switch-cases">
@@ -262,9 +262,9 @@
   </rule>
   <rule name="case-label">
     <production>
-      <keyword token="case"/>
+      <keyword token="case" optional="false"/>
       <rule_reference ruleName="case-item-list" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
     </production>
   </rule>
   <rule name="case-item-list">
@@ -275,19 +275,19 @@
     <production>
       <rule_reference ruleName="pattern" optional="false"/>
       <rule_reference ruleName="where-clause" optional="true"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="case-item-list" optional="false"/>
     </production>
   </rule>
   <rule name="default-label">
     <production>
-      <keyword token="default"/>
-      <keyword token=":"/>
+      <keyword token="default" optional="false"/>
+      <keyword token=":" optional="false"/>
     </production>
   </rule>
   <rule name="where-clause">
     <production>
-      <keyword token="where"/>
+      <keyword token="where" optional="false"/>
       <rule_reference ruleName="where-expression" optional="false"/>
     </production>
   </rule>
@@ -313,7 +313,7 @@
   <rule name="statement-label">
     <production>
       <rule_reference ruleName="label-name" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
     </production>
   </rule>
   <rule name="label-name">
@@ -340,33 +340,33 @@
   </rule>
   <rule name="break-statement">
     <production>
-      <keyword token="break"/>
+      <keyword token="break" optional="false"/>
       <rule_reference ruleName="label-name" optional="true"/>
     </production>
   </rule>
   <rule name="continue-statement">
     <production>
-      <keyword token="continue"/>
+      <keyword token="continue" optional="false"/>
       <rule_reference ruleName="label-name" optional="true"/>
     </production>
   </rule>
   <rule name="fallthrough-statement">
     <production>
-      <keyword token="fallthrough"/>
+      <keyword token="fallthrough" optional="false"/>
     </production>
   </rule>
   <rule name="return-statement">
     <production>
-      <keyword token="return"/>
+      <keyword token="return" optional="false"/>
       <rule_reference ruleName="expression" optional="true"/>
     </production>
   </rule>
   <rule name="availability-condition">
     <production>
-      <keyword token="available"/>
-      <keyword token="("/>
+      <keyword token="available" optional="false"/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="availability-arguments" optional="false"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="availability-arguments">
@@ -375,7 +375,7 @@
     </production>
     <production>
       <rule_reference ruleName="availability-argument" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="availability-arguments" optional="false"/>
     </production>
   </rule>
@@ -385,24 +385,24 @@
       <rule_reference ruleName="platform-version" optional="false"/>
     </production>
     <production>
-      <keyword token="*"/>
+      <keyword token="*" optional="false"/>
     </production>
   </rule>
   <rule name="platform-name">
     <production>
-      <keyword token="iOS"/>
+      <keyword token="iOS" optional="false"/>
     </production>
     <production>
-      <keyword token="iOSApplicationExtension"/>
+      <keyword token="iOSApplicationExtension" optional="false"/>
     </production>
     <production>
-      <keyword token="OSX"/>
+      <keyword token="OSX" optional="false"/>
     </production>
     <production>
-      <keyword token="OSXApplicationExtension"/>
+      <keyword token="OSXApplicationExtension" optional="false"/>
     </production>
     <production>
-      <keyword token="watchOS"/>
+      <keyword token="watchOS" optional="false"/>
     </production>
   </rule>
   <rule name="platform-version">
@@ -411,32 +411,32 @@
     </production>
     <production>
       <rule_reference ruleName="decimal-digits" optional="false"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="decimal-digits" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="decimal-digits" optional="false"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="decimal-digits" optional="false"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="decimal-digits" optional="false"/>
     </production>
   </rule>
   <rule name="throw-statement">
     <production>
-      <keyword token="throw"/>
+      <keyword token="throw" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
     </production>
   </rule>
   <rule name="defer-statement">
     <production>
-      <keyword token="defer"/>
+      <keyword token="defer" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
   </rule>
   <rule name="do-statement">
     <production>
-      <keyword token="do"/>
+      <keyword token="do" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
       <rule_reference ruleName="catch-clauses" optional="true"/>
     </production>
@@ -449,7 +449,7 @@
   </rule>
   <rule name="catch-clause">
     <production>
-      <keyword token="catch"/>
+      <keyword token="catch" optional="false"/>
       <rule_reference ruleName="pattern" optional="true"/>
       <rule_reference ruleName="where-clause" optional="true"/>
       <rule_reference ruleName="code-block" optional="false"/>
@@ -465,12 +465,12 @@
   </rule>
   <rule name="build-configuration-statement">
     <production>
-      <keyword token="if"/>
+      <keyword token="if" optional="false"/>
       <rule_reference ruleName="build-configuration" optional="false"/>
       <rule_reference ruleName="statements" optional="true"/>
       <rule_reference ruleName="build-configuration-elseif-clauses" optional="true"/>
       <rule_reference ruleName="build-configuration-else-clause" optional="true"/>
-      <keyword token="endif"/>
+      <keyword token="endif" optional="false"/>
     </production>
   </rule>
   <rule name="build-configuration-elseif-clauses">
@@ -481,14 +481,14 @@
   </rule>
   <rule name="build-configuration-elseif-clause">
     <production>
-      <keyword token="elseif"/>
+      <keyword token="elseif" optional="false"/>
       <rule_reference ruleName="build-configuration" optional="false"/>
       <rule_reference ruleName="statements" optional="true"/>
     </production>
   </rule>
   <rule name="build-configuration-else-clause">
     <production>
-      <keyword token="else"/>
+      <keyword token="else" optional="false"/>
       <rule_reference ruleName="statements" optional="true"/>
     </production>
   </rule>
@@ -503,73 +503,73 @@
       <rule_reference ruleName="boolean-literal" optional="false"/>
     </production>
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="build-configuration" optional="false"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="!"/>
-      <rule_reference ruleName="build-configuration" optional="false"/>
-    </production>
-    <production>
-      <rule_reference ruleName="build-configuration" optional="false"/>
-      <keyword token="&amp;&amp;"/>
+      <keyword token="!" optional="false"/>
       <rule_reference ruleName="build-configuration" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="build-configuration" optional="false"/>
-      <keyword token="||"/>
+      <keyword token="&amp;&amp;" optional="false"/>
+      <rule_reference ruleName="build-configuration" optional="false"/>
+    </production>
+    <production>
+      <rule_reference ruleName="build-configuration" optional="false"/>
+      <keyword token="||" optional="false"/>
       <rule_reference ruleName="build-configuration" optional="false"/>
     </production>
   </rule>
   <rule name="platform-testing-function">
     <production>
-      <keyword token="os"/>
-      <keyword token="("/>
+      <keyword token="os" optional="false"/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="operating-system" optional="false"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="arch"/>
-      <keyword token="("/>
+      <keyword token="arch" optional="false"/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="architecture" optional="false"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="operating-system">
     <production>
-      <keyword token="OSX"/>
+      <keyword token="OSX" optional="false"/>
     </production>
     <production>
-      <keyword token="iOS"/>
+      <keyword token="iOS" optional="false"/>
     </production>
     <production>
-      <keyword token="watchOS"/>
+      <keyword token="watchOS" optional="false"/>
     </production>
     <production>
-      <keyword token="tvOS"/>
+      <keyword token="tvOS" optional="false"/>
     </production>
   </rule>
   <rule name="architecture">
     <production>
-      <keyword token="i386"/>
+      <keyword token="i386" optional="false"/>
     </production>
     <production>
-      <keyword token="x86_64"/>
+      <keyword token="x86_64" optional="false"/>
     </production>
     <production>
-      <keyword token="arm"/>
+      <keyword token="arm" optional="false"/>
     </production>
     <production>
-      <keyword token="arm64"/>
+      <keyword token="arm64" optional="false"/>
     </production>
   </rule>
   <rule name="line-control-statement">
     <production>
-      <keyword token="line"/>
+      <keyword token="line" optional="false"/>
     </production>
     <production>
-      <keyword token="line"/>
+      <keyword token="line" optional="false"/>
       <rule_reference ruleName="line-number" optional="false"/>
       <rule_reference ruleName="file-name" optional="false"/>
     </production>
@@ -588,10 +588,10 @@
   </rule>
   <rule name="generic-parameter-clause">
     <production>
-      <keyword token="&lt;"/>
+      <keyword token="&lt;" optional="false"/>
       <rule_reference ruleName="generic-parameter-list" optional="false"/>
       <rule_reference ruleName="requirement-clause" optional="true"/>
-      <keyword token="&gt;"/>
+      <keyword token="&gt;" optional="false"/>
     </production>
   </rule>
   <rule name="generic-parameter-list">
@@ -600,7 +600,7 @@
     </production>
     <production>
       <rule_reference ruleName="generic-parameter" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="generic-parameter-list" optional="false"/>
     </production>
   </rule>
@@ -610,18 +610,18 @@
     </production>
     <production>
       <rule_reference ruleName="type-name" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="type-identifier" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="type-name" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="protocol-composition-type" optional="false"/>
     </production>
   </rule>
   <rule name="requirement-clause">
     <production>
-      <keyword token="where"/>
+      <keyword token="where" optional="false"/>
       <rule_reference ruleName="requirement-list" optional="false"/>
     </production>
   </rule>
@@ -631,7 +631,7 @@
     </production>
     <production>
       <rule_reference ruleName="requirement" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="requirement-list" optional="false"/>
     </production>
   </rule>
@@ -646,27 +646,27 @@
   <rule name="conformance-requirement">
     <production>
       <rule_reference ruleName="type-identifier" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="type-identifier" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="type-identifier" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="protocol-composition-type" optional="false"/>
     </production>
   </rule>
   <rule name="same-type-requirement">
     <production>
       <rule_reference ruleName="type-identifier" optional="false"/>
-      <keyword token="=="/>
+      <keyword token="==" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
   </rule>
   <rule name="generic-argument-clause">
     <production>
-      <keyword token="&lt;"/>
+      <keyword token="&lt;" optional="false"/>
       <rule_reference ruleName="generic-argument-list" optional="false"/>
-      <keyword token="&gt;"/>
+      <keyword token="&gt;" optional="false"/>
     </production>
   </rule>
   <rule name="generic-argument-list">
@@ -675,7 +675,7 @@
     </production>
     <production>
       <rule_reference ruleName="generic-argument" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="generic-argument-list" optional="false"/>
     </production>
   </rule>
@@ -741,40 +741,40 @@
   </rule>
   <rule name="code-block">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="statements" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="import-declaration">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="import"/>
+      <keyword token="import" optional="false"/>
       <rule_reference ruleName="import-kind" optional="true"/>
       <rule_reference ruleName="import-path" optional="false"/>
     </production>
   </rule>
   <rule name="import-kind">
     <production>
-      <keyword token="typealias"/>
+      <keyword token="typealias" optional="false"/>
     </production>
     <production>
-      <keyword token="struct"/>
+      <keyword token="struct" optional="false"/>
     </production>
     <production>
-      <keyword token="class"/>
+      <keyword token="class" optional="false"/>
     </production>
     <production>
-      <keyword token="enum"/>
+      <keyword token="enum" optional="false"/>
     </production>
     <production>
-      <keyword token="protocol"/>
+      <keyword token="protocol" optional="false"/>
     </production>
     <production>
-      <keyword token="var"/>
+      <keyword token="var" optional="false"/>
     </production>
     <production>
-      <keyword token="func"/>
+      <keyword token="func" optional="false"/>
     </production>
   </rule>
   <rule name="import-path">
@@ -783,7 +783,7 @@
     </production>
     <production>
       <rule_reference ruleName="import-path-identifier" optional="false"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="import-path" optional="false"/>
     </production>
   </rule>
@@ -799,7 +799,7 @@
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="declaration-modifiers" optional="true"/>
-      <keyword token="let"/>
+      <keyword token="let" optional="false"/>
       <rule_reference ruleName="pattern-initializer-list" optional="false"/>
     </production>
   </rule>
@@ -809,7 +809,7 @@
     </production>
     <production>
       <rule_reference ruleName="pattern-initializer" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="pattern-initializer-list" optional="false"/>
     </production>
   </rule>
@@ -821,7 +821,7 @@
   </rule>
   <rule name="initializer">
     <production>
-      <keyword token="="/>
+      <keyword token="=" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
     </production>
   </rule>
@@ -866,7 +866,7 @@
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="declaration-modifiers" optional="true"/>
-      <keyword token="var"/>
+      <keyword token="var" optional="false"/>
     </production>
   </rule>
   <rule name="variable-name">
@@ -879,84 +879,84 @@
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="getter-clause" optional="false"/>
       <rule_reference ruleName="setter-clause" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="setter-clause" optional="false"/>
       <rule_reference ruleName="getter-clause" optional="false"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="getter-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="get"/>
+      <keyword token="get" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
   </rule>
   <rule name="setter-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="set"/>
+      <keyword token="set" optional="false"/>
       <rule_reference ruleName="setter-name" optional="true"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
   </rule>
   <rule name="setter-name">
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="identifier" optional="false"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="getter-setter-keyword-block">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="getter-keyword-clause" optional="false"/>
       <rule_reference ruleName="setter-keyword-clause" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="setter-keyword-clause" optional="false"/>
       <rule_reference ruleName="getter-keyword-clause" optional="false"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="getter-keyword-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="get"/>
+      <keyword token="get" optional="false"/>
     </production>
   </rule>
   <rule name="setter-keyword-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="set"/>
+      <keyword token="set" optional="false"/>
     </production>
   </rule>
   <rule name="willSet-didSet-block">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="willSet-clause" optional="false"/>
       <rule_reference ruleName="didSet-clause" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="didSet-clause" optional="false"/>
       <rule_reference ruleName="willSet-clause" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="willSet-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="willSet"/>
+      <keyword token="willSet" optional="false"/>
       <rule_reference ruleName="setter-name" optional="true"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
@@ -964,7 +964,7 @@
   <rule name="didSet-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="didSet"/>
+      <keyword token="didSet" optional="false"/>
       <rule_reference ruleName="setter-name" optional="true"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
@@ -979,7 +979,7 @@
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="access-level-modifier" optional="true"/>
-      <keyword token="typealias"/>
+      <keyword token="typealias" optional="false"/>
       <rule_reference ruleName="typealias-name" optional="false"/>
     </production>
   </rule>
@@ -990,7 +990,7 @@
   </rule>
   <rule name="typealias-assignment">
     <production>
-      <keyword token="="/>
+      <keyword token="=" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
   </rule>
@@ -1007,7 +1007,7 @@
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="declaration-modifiers" optional="true"/>
-      <keyword token="func"/>
+      <keyword token="func" optional="false"/>
     </production>
   </rule>
   <rule name="function-name">
@@ -1021,18 +1021,18 @@
   <rule name="function-signature">
     <production>
       <rule_reference ruleName="parameter-clauses" optional="false"/>
-      <keyword token="throws"/>
+      <keyword token="throws" optional="true"/>
       <rule_reference ruleName="function-result" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="parameter-clauses" optional="false"/>
-      <keyword token="rethrows"/>
+      <keyword token="rethrows" optional="false"/>
       <rule_reference ruleName="function-result" optional="true"/>
     </production>
   </rule>
   <rule name="function-result">
     <production>
-      <keyword token="-&gt;"/>
+      <keyword token="-&gt;" optional="false"/>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
@@ -1050,13 +1050,13 @@
   </rule>
   <rule name="parameter-clause">
     <production>
-      <keyword token="("/>
-      <keyword token=")"/>
+      <keyword token="(" optional="false"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="parameter-list" optional="false"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="parameter-list">
@@ -1065,27 +1065,27 @@
     </production>
     <production>
       <rule_reference ruleName="parameter" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="parameter-list" optional="false"/>
     </production>
   </rule>
   <rule name="parameter">
     <production>
-      <keyword token="let"/>
+      <keyword token="let" optional="true"/>
       <rule_reference ruleName="external-parameter-name" optional="true"/>
       <rule_reference ruleName="local-parameter-name" optional="false"/>
       <rule_reference ruleName="type-annotation" optional="false"/>
       <rule_reference ruleName="default-argument-clause" optional="true"/>
     </production>
     <production>
-      <keyword token="var"/>
+      <keyword token="var" optional="false"/>
       <rule_reference ruleName="external-parameter-name" optional="true"/>
       <rule_reference ruleName="local-parameter-name" optional="false"/>
       <rule_reference ruleName="type-annotation" optional="false"/>
       <rule_reference ruleName="default-argument-clause" optional="true"/>
     </production>
     <production>
-      <keyword token="inout"/>
+      <keyword token="inout" optional="false"/>
       <rule_reference ruleName="external-parameter-name" optional="true"/>
       <rule_reference ruleName="local-parameter-name" optional="false"/>
       <rule_reference ruleName="type-annotation" optional="false"/>
@@ -1094,7 +1094,7 @@
       <rule_reference ruleName="external-parameter-name" optional="true"/>
       <rule_reference ruleName="local-parameter-name" optional="false"/>
       <rule_reference ruleName="type-annotation" optional="false"/>
-      <keyword token="..."/>
+      <keyword token="..." optional="false"/>
     </production>
   </rule>
   <rule name="external-parameter-name">
@@ -1102,7 +1102,7 @@
       <rule_reference ruleName="identifier" optional="false"/>
     </production>
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="local-parameter-name">
@@ -1110,12 +1110,12 @@
       <rule_reference ruleName="identifier" optional="false"/>
     </production>
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="default-argument-clause">
     <production>
-      <keyword token="="/>
+      <keyword token="=" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
     </production>
   </rule>
@@ -1133,14 +1133,14 @@
   </rule>
   <rule name="union-style-enum">
     <production>
-      <keyword token="indirect"/>
-      <keyword token="enum"/>
+      <keyword token="indirect" optional="true"/>
+      <keyword token="enum" optional="false"/>
       <rule_reference ruleName="enum-name" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="type-inheritance-clause" optional="true"/>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="union-style-enum-members" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="union-style-enum-members">
@@ -1160,8 +1160,8 @@
   <rule name="union-style-enum-case-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="indirect"/>
-      <keyword token="case"/>
+      <keyword token="indirect" optional="true"/>
+      <keyword token="case" optional="false"/>
       <rule_reference ruleName="union-style-enum-case-list" optional="false"/>
     </production>
   </rule>
@@ -1171,7 +1171,7 @@
     </production>
     <production>
       <rule_reference ruleName="union-style-enum-case" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="union-style-enum-case-list" optional="false"/>
     </production>
   </rule>
@@ -1193,13 +1193,13 @@
   </rule>
   <rule name="raw-value-style-enum">
     <production>
-      <keyword token="enum"/>
+      <keyword token="enum" optional="false"/>
       <rule_reference ruleName="enum-name" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="type-inheritance-clause" optional="false"/>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="raw-value-style-enum-members" optional="false"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="raw-value-style-enum-members">
@@ -1219,7 +1219,7 @@
   <rule name="raw-value-style-enum-case-clause">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="case"/>
+      <keyword token="case" optional="false"/>
       <rule_reference ruleName="raw-value-style-enum-case-list" optional="false"/>
     </production>
   </rule>
@@ -1229,7 +1229,7 @@
     </production>
     <production>
       <rule_reference ruleName="raw-value-style-enum-case" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="raw-value-style-enum-case-list" optional="false"/>
     </production>
   </rule>
@@ -1241,7 +1241,7 @@
   </rule>
   <rule name="raw-value-assignment">
     <production>
-      <keyword token="="/>
+      <keyword token="=" optional="false"/>
       <rule_reference ruleName="raw-value-literal" optional="false"/>
     </production>
   </rule>
@@ -1260,7 +1260,7 @@
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="access-level-modifier" optional="true"/>
-      <keyword token="struct"/>
+      <keyword token="struct" optional="false"/>
       <rule_reference ruleName="struct-name" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="type-inheritance-clause" optional="true"/>
@@ -1274,16 +1274,16 @@
   </rule>
   <rule name="struct-body">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="declarations" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="class-declaration">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="access-level-modifier" optional="true"/>
-      <keyword token="class"/>
+      <keyword token="class" optional="false"/>
       <rule_reference ruleName="class-name" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="type-inheritance-clause" optional="true"/>
@@ -1297,16 +1297,16 @@
   </rule>
   <rule name="class-body">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="declarations" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="protocol-declaration">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="access-level-modifier" optional="true"/>
-      <keyword token="protocol"/>
+      <keyword token="protocol" optional="false"/>
       <rule_reference ruleName="protocol-name" optional="false"/>
       <rule_reference ruleName="type-inheritance-clause" optional="true"/>
       <rule_reference ruleName="protocol-body" optional="false"/>
@@ -1319,9 +1319,9 @@
   </rule>
   <rule name="protocol-body">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="protocol-member-declarations" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="protocol-member-declaration">
@@ -1368,13 +1368,13 @@
       <rule_reference ruleName="initializer-head" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="parameter-clause" optional="false"/>
-      <keyword token="throws"/>
+      <keyword token="throws" optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="initializer-head" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="parameter-clause" optional="false"/>
-      <keyword token="rethrows"/>
+      <keyword token="rethrows" optional="false"/>
     </production>
   </rule>
   <rule name="protocol-subscript-declaration">
@@ -1396,14 +1396,14 @@
       <rule_reference ruleName="initializer-head" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="parameter-clause" optional="false"/>
-      <keyword token="throws"/>
+      <keyword token="throws" optional="true"/>
       <rule_reference ruleName="initializer-body" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="initializer-head" optional="false"/>
       <rule_reference ruleName="generic-parameter-clause" optional="true"/>
       <rule_reference ruleName="parameter-clause" optional="false"/>
-      <keyword token="rethrows"/>
+      <keyword token="rethrows" optional="false"/>
       <rule_reference ruleName="initializer-body" optional="false"/>
     </production>
   </rule>
@@ -1411,19 +1411,19 @@
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="declaration-modifiers" optional="true"/>
-      <keyword token="init"/>
+      <keyword token="init" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="declaration-modifiers" optional="true"/>
-      <keyword token="init"/>
-      <keyword token="?"/>
+      <keyword token="init" optional="false"/>
+      <keyword token="?" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="declaration-modifiers" optional="true"/>
-      <keyword token="init"/>
-      <keyword token="!"/>
+      <keyword token="init" optional="false"/>
+      <keyword token="!" optional="false"/>
     </production>
   </rule>
   <rule name="initializer-body">
@@ -1434,14 +1434,14 @@
   <rule name="deinitializer-declaration">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="deinit"/>
+      <keyword token="deinit" optional="false"/>
       <rule_reference ruleName="code-block" optional="false"/>
     </production>
   </rule>
   <rule name="extension-declaration">
     <production>
       <rule_reference ruleName="access-level-modifier" optional="true"/>
-      <keyword token="extension"/>
+      <keyword token="extension" optional="false"/>
       <rule_reference ruleName="type-identifier" optional="false"/>
       <rule_reference ruleName="type-inheritance-clause" optional="true"/>
       <rule_reference ruleName="extension-body" optional="false"/>
@@ -1449,9 +1449,9 @@
   </rule>
   <rule name="extension-body">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="declarations" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="subscript-declaration">
@@ -1475,13 +1475,13 @@
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="declaration-modifiers" optional="true"/>
-      <keyword token="subscript"/>
+      <keyword token="subscript" optional="false"/>
       <rule_reference ruleName="parameter-clause" optional="false"/>
     </production>
   </rule>
   <rule name="subscript-result">
     <production>
-      <keyword token="-&gt;"/>
+      <keyword token="-&gt;" optional="false"/>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
@@ -1499,30 +1499,30 @@
   </rule>
   <rule name="prefix-operator-declaration">
     <production>
-      <keyword token="prefix"/>
-      <keyword token="operator"/>
+      <keyword token="prefix" optional="false"/>
+      <keyword token="operator" optional="false"/>
       <rule_reference ruleName="operator" optional="false"/>
-      <keyword token="{"/>
-      <keyword token="}"/>
+      <keyword token="{" optional="false"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="postfix-operator-declaration">
     <production>
-      <keyword token="postfix"/>
-      <keyword token="operator"/>
+      <keyword token="postfix" optional="false"/>
+      <keyword token="operator" optional="false"/>
       <rule_reference ruleName="operator" optional="false"/>
-      <keyword token="{"/>
-      <keyword token="}"/>
+      <keyword token="{" optional="false"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="infix-operator-declaration">
     <production>
-      <keyword token="infix"/>
-      <keyword token="operator"/>
+      <keyword token="infix" optional="false"/>
+      <keyword token="operator" optional="false"/>
       <rule_reference ruleName="operator" optional="false"/>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="infix-operator-attributes" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="infix-operator-attributes">
@@ -1533,7 +1533,7 @@
   </rule>
   <rule name="precedence-clause">
     <production>
-      <keyword token="precedence"/>
+      <keyword token="precedence" optional="false"/>
       <rule_reference ruleName="precedence-level" optional="false"/>
     </production>
   </rule>
@@ -1546,81 +1546,81 @@
   </rule>
   <rule name="associativity-clause">
     <production>
-      <keyword token="associativity"/>
+      <keyword token="associativity" optional="false"/>
       <rule_reference ruleName="associativity" optional="false"/>
     </production>
   </rule>
   <rule name="associativity">
     <production>
-      <keyword token="left"/>
+      <keyword token="left" optional="false"/>
     </production>
     <production>
-      <keyword token="right"/>
+      <keyword token="right" optional="false"/>
     </production>
     <production>
-      <keyword token="none"/>
+      <keyword token="none" optional="false"/>
     </production>
   </rule>
   <rule name="declaration-modifier">
     <production>
-      <keyword token="class"/>
+      <keyword token="class" optional="false"/>
     </production>
     <production>
-      <keyword token="convenience"/>
+      <keyword token="convenience" optional="false"/>
     </production>
     <production>
-      <keyword token="dynamic"/>
+      <keyword token="dynamic" optional="false"/>
     </production>
     <production>
-      <keyword token="final"/>
+      <keyword token="final" optional="false"/>
     </production>
     <production>
-      <keyword token="infix"/>
+      <keyword token="infix" optional="false"/>
     </production>
     <production>
-      <keyword token="lazy"/>
+      <keyword token="lazy" optional="false"/>
     </production>
     <production>
-      <keyword token="mutating"/>
+      <keyword token="mutating" optional="false"/>
     </production>
     <production>
-      <keyword token="nonmutating"/>
+      <keyword token="nonmutating" optional="false"/>
     </production>
     <production>
-      <keyword token="optional"/>
+      <keyword token="optional" optional="false"/>
     </production>
     <production>
-      <keyword token="override"/>
+      <keyword token="override" optional="false"/>
     </production>
     <production>
-      <keyword token="postfix"/>
+      <keyword token="postfix" optional="false"/>
     </production>
     <production>
-      <keyword token="prefix"/>
+      <keyword token="prefix" optional="false"/>
     </production>
     <production>
-      <keyword token="required"/>
+      <keyword token="required" optional="false"/>
     </production>
     <production>
-      <keyword token="static"/>
+      <keyword token="static" optional="false"/>
     </production>
     <production>
-      <keyword token="unowned"/>
+      <keyword token="unowned" optional="false"/>
     </production>
     <production>
-      <keyword token="unowned"/>
-      <keyword token="("/>
-      <keyword token="safe"/>
-      <keyword token=")"/>
+      <keyword token="unowned" optional="false"/>
+      <keyword token="(" optional="false"/>
+      <keyword token="safe" optional="false"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="unowned"/>
-      <keyword token="("/>
-      <keyword token="unsafe"/>
-      <keyword token=")"/>
+      <keyword token="unowned" optional="false"/>
+      <keyword token="(" optional="false"/>
+      <keyword token="unsafe" optional="false"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="weak"/>
+      <keyword token="weak" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="access-level-modifier" optional="false"/>
@@ -1634,31 +1634,31 @@
   </rule>
   <rule name="access-level-modifier">
     <production>
-      <keyword token="internal"/>
+      <keyword token="internal" optional="false"/>
     </production>
     <production>
-      <keyword token="internal"/>
-      <keyword token="("/>
-      <keyword token="set"/>
-      <keyword token=")"/>
+      <keyword token="internal" optional="false"/>
+      <keyword token="(" optional="false"/>
+      <keyword token="set" optional="false"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="private"/>
+      <keyword token="private" optional="false"/>
     </production>
     <production>
-      <keyword token="private"/>
-      <keyword token="("/>
-      <keyword token="set"/>
-      <keyword token=")"/>
+      <keyword token="private" optional="false"/>
+      <keyword token="(" optional="false"/>
+      <keyword token="set" optional="false"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="public"/>
+      <keyword token="public" optional="false"/>
     </production>
     <production>
-      <keyword token="public"/>
-      <keyword token="("/>
-      <keyword token="set"/>
-      <keyword token=")"/>
+      <keyword token="public" optional="false"/>
+      <keyword token="(" optional="false"/>
+      <keyword token="set" optional="false"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="pattern">
@@ -1692,7 +1692,7 @@
   </rule>
   <rule name="wildcard-pattern">
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="identifier-pattern">
@@ -1702,19 +1702,19 @@
   </rule>
   <rule name="value-binding-pattern">
     <production>
-      <keyword token="var"/>
+      <keyword token="var" optional="false"/>
       <rule_reference ruleName="pattern" optional="false"/>
     </production>
     <production>
-      <keyword token="let"/>
+      <keyword token="let" optional="false"/>
       <rule_reference ruleName="pattern" optional="false"/>
     </production>
   </rule>
   <rule name="tuple-pattern">
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="tuple-pattern-element-list" optional="true"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="tuple-pattern-element-list">
@@ -1723,7 +1723,7 @@
     </production>
     <production>
       <rule_reference ruleName="tuple-pattern-element" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="tuple-pattern-element-list" optional="false"/>
     </production>
   </rule>
@@ -1735,7 +1735,7 @@
   <rule name="enum-case-pattern">
     <production>
       <rule_reference ruleName="type-identifier" optional="true"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="enum-case-name" optional="false"/>
       <rule_reference ruleName="tuple-pattern" optional="true"/>
     </production>
@@ -1743,7 +1743,7 @@
   <rule name="optional-pattern">
     <production>
       <rule_reference ruleName="identifier-pattern" optional="false"/>
-      <keyword token="?"/>
+      <keyword token="?" optional="false"/>
     </production>
   </rule>
   <rule name="type-casting-pattern">
@@ -1756,14 +1756,14 @@
   </rule>
   <rule name="is-pattern">
     <production>
-      <keyword token="is"/>
+      <keyword token="is" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
   </rule>
   <rule name="as-pattern">
     <production>
       <rule_reference ruleName="pattern" optional="false"/>
-      <keyword token="as"/>
+      <keyword token="as" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
   </rule>
@@ -1774,7 +1774,7 @@
   </rule>
   <rule name="attribute">
     <production>
-      <keyword token="@"/>
+      <keyword token="@" optional="false"/>
       <rule_reference ruleName="attribute-name" optional="false"/>
       <rule_reference ruleName="attribute-argument-clause" optional="true"/>
     </production>
@@ -1786,9 +1786,9 @@
   </rule>
   <rule name="attribute-argument-clause">
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="balanced-tokens" optional="true"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="attributes">
@@ -1805,19 +1805,19 @@
   </rule>
   <rule name="balanced-token">
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="balanced-tokens" optional="true"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
     <production>
-      <keyword token="["/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="balanced-tokens" optional="true"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="balanced-tokens" optional="true"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
     <production>
       <literal>
@@ -1850,7 +1850,7 @@
     </production>
     <production>
       <rule_reference ruleName="expression" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="expression-list" optional="false"/>
     </production>
   </rule>
@@ -1865,21 +1865,21 @@
   </rule>
   <rule name="in-out-expression">
     <production>
-      <keyword token="&amp;"/>
+      <keyword token="&amp;" optional="false"/>
       <rule_reference ruleName="identifier" optional="false"/>
     </production>
   </rule>
   <rule name="try-operator">
     <production>
-      <keyword token="try"/>
+      <keyword token="try" optional="false"/>
     </production>
     <production>
-      <keyword token="try"/>
-      <keyword token="?"/>
+      <keyword token="try" optional="false"/>
+      <keyword token="?" optional="false"/>
     </production>
     <production>
-      <keyword token="try"/>
-      <keyword token="!"/>
+      <keyword token="try" optional="false"/>
+      <keyword token="!" optional="false"/>
     </production>
   </rule>
   <rule name="binary-expression">
@@ -1909,34 +1909,34 @@
   </rule>
   <rule name="assignment-operator">
     <production>
-      <keyword token="="/>
+      <keyword token="=" optional="false"/>
     </production>
   </rule>
   <rule name="conditional-operator">
     <production>
-      <keyword token="?"/>
+      <keyword token="?" optional="false"/>
       <rule_reference ruleName="try-operator" optional="true"/>
       <rule_reference ruleName="expression" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
     </production>
   </rule>
   <rule name="type-casting-operator">
     <production>
-      <keyword token="is"/>
+      <keyword token="is" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
     <production>
-      <keyword token="as"/>
+      <keyword token="as" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
     <production>
-      <keyword token="as"/>
-      <keyword token="?"/>
+      <keyword token="as" optional="false"/>
+      <keyword token="?" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
     <production>
-      <keyword token="as"/>
-      <keyword token="!"/>
+      <keyword token="as" optional="false"/>
+      <keyword token="!" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
   </rule>
@@ -1978,33 +1978,33 @@
       <rule_reference ruleName="dictionary-literal" optional="false"/>
     </production>
     <production>
-      <keyword token="__FILE__"/>
+      <keyword token="__FILE__" optional="false"/>
     </production>
     <production>
-      <keyword token="__LINE__"/>
+      <keyword token="__LINE__" optional="false"/>
     </production>
     <production>
-      <keyword token="__COLUMN__"/>
+      <keyword token="__COLUMN__" optional="false"/>
     </production>
     <production>
-      <keyword token="__FUNCTION__"/>
+      <keyword token="__FUNCTION__" optional="false"/>
     </production>
   </rule>
   <rule name="array-literal">
     <production>
-      <keyword token="["/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="array-literal-items" optional="true"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
   </rule>
   <rule name="array-literal-items">
     <production>
       <rule_reference ruleName="array-literal-item" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="array-literal-item" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="array-literal-items" optional="false"/>
     </production>
   </rule>
@@ -2015,53 +2015,53 @@
   </rule>
   <rule name="dictionary-literal">
     <production>
-      <keyword token="["/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="dictionary-literal-items" optional="false"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
     <production>
-      <keyword token="["/>
-      <keyword token=":"/>
-      <keyword token="]"/>
+      <keyword token="[" optional="false"/>
+      <keyword token=":" optional="false"/>
+      <keyword token="]" optional="false"/>
     </production>
   </rule>
   <rule name="dictionary-literal-items">
     <production>
       <rule_reference ruleName="dictionary-literal-item" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="true"/>
     </production>
     <production>
       <rule_reference ruleName="dictionary-literal-item" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="dictionary-literal-items" optional="false"/>
     </production>
   </rule>
   <rule name="dictionary-literal-item">
     <production>
       <rule_reference ruleName="expression" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
     </production>
   </rule>
   <rule name="self-expression">
     <production>
-      <keyword token="self"/>
+      <keyword token="self" optional="false"/>
     </production>
     <production>
-      <keyword token="self"/>
-      <keyword token="."/>
+      <keyword token="self" optional="false"/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="identifier" optional="false"/>
     </production>
     <production>
-      <keyword token="self"/>
-      <keyword token="["/>
+      <keyword token="self" optional="false"/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="expression-list" optional="false"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
     <production>
-      <keyword token="self"/>
-      <keyword token="."/>
-      <keyword token="init"/>
+      <keyword token="self" optional="false"/>
+      <keyword token="." optional="false"/>
+      <keyword token="init" optional="false"/>
     </production>
   </rule>
   <rule name="superclass-expression">
@@ -2077,67 +2077,67 @@
   </rule>
   <rule name="superclass-method-expression">
     <production>
-      <keyword token="super"/>
-      <keyword token="."/>
+      <keyword token="super" optional="false"/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="identifier" optional="false"/>
     </production>
   </rule>
   <rule name="superclass-subscript-expression">
     <production>
-      <keyword token="super"/>
-      <keyword token="["/>
+      <keyword token="super" optional="false"/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="expression-list" optional="false"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
   </rule>
   <rule name="superclass-initializer-expression">
     <production>
-      <keyword token="super"/>
-      <keyword token="."/>
-      <keyword token="init"/>
+      <keyword token="super" optional="false"/>
+      <keyword token="." optional="false"/>
+      <keyword token="init" optional="false"/>
     </production>
   </rule>
   <rule name="closure-expression">
     <production>
-      <keyword token="{"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="closure-signature" optional="true"/>
       <rule_reference ruleName="statements" optional="false"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="closure-signature">
     <production>
       <rule_reference ruleName="parameter-clause" optional="false"/>
       <rule_reference ruleName="function-result" optional="true"/>
-      <keyword token="in"/>
+      <keyword token="in" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="identifier-list" optional="false"/>
       <rule_reference ruleName="function-result" optional="true"/>
-      <keyword token="in"/>
+      <keyword token="in" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="capture-list" optional="false"/>
       <rule_reference ruleName="parameter-clause" optional="false"/>
       <rule_reference ruleName="function-result" optional="true"/>
-      <keyword token="in"/>
+      <keyword token="in" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="capture-list" optional="false"/>
       <rule_reference ruleName="identifier-list" optional="false"/>
       <rule_reference ruleName="function-result" optional="true"/>
-      <keyword token="in"/>
+      <keyword token="in" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="capture-list" optional="false"/>
-      <keyword token="in"/>
+      <keyword token="in" optional="false"/>
     </production>
   </rule>
   <rule name="capture-list">
     <production>
-      <keyword token="["/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="capture-list-items" optional="false"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
   </rule>
   <rule name="capture-list-items">
@@ -2146,7 +2146,7 @@
     </production>
     <production>
       <rule_reference ruleName="capture-list-item" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="capture-list-items" optional="false"/>
     </production>
   </rule>
@@ -2158,29 +2158,29 @@
   </rule>
   <rule name="capture-specifier">
     <production>
-      <keyword token="weak"/>
+      <keyword token="weak" optional="false"/>
     </production>
     <production>
-      <keyword token="unowned"/>
+      <keyword token="unowned" optional="false"/>
     </production>
     <production>
-      <keyword token="unowned(safe)"/>
+      <keyword token="unowned(safe)" optional="false"/>
     </production>
     <production>
-      <keyword token="unowned(unsafe)"/>
+      <keyword token="unowned(unsafe)" optional="false"/>
     </production>
   </rule>
   <rule name="implicit-member-expression">
     <production>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="identifier" optional="false"/>
     </production>
   </rule>
   <rule name="parenthesized-expression">
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="expression-element-list" optional="true"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="expression-element-list">
@@ -2189,7 +2189,7 @@
     </production>
     <production>
       <rule_reference ruleName="expression-element" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="expression-element-list" optional="false"/>
     </production>
   </rule>
@@ -2199,13 +2199,13 @@
     </production>
     <production>
       <rule_reference ruleName="identifier" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="expression" optional="false"/>
     </production>
   </rule>
   <rule name="wildcard-expression">
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="postfix-expression">
@@ -2256,19 +2256,19 @@
   <rule name="initializer-expression">
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="."/>
-      <keyword token="init"/>
+      <keyword token="." optional="false"/>
+      <keyword token="init" optional="false"/>
     </production>
   </rule>
   <rule name="explicit-member-expression">
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="decimal-digits" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="identifier" optional="false"/>
       <rule_reference ruleName="generic-argument-clause" optional="true"/>
     </production>
@@ -2276,35 +2276,35 @@
   <rule name="postfix-self-expression">
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="."/>
-      <keyword token="self"/>
+      <keyword token="." optional="false"/>
+      <keyword token="self" optional="false"/>
     </production>
   </rule>
   <rule name="dynamic-type-expression">
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="."/>
-      <keyword token="dynamicType"/>
+      <keyword token="." optional="false"/>
+      <keyword token="dynamicType" optional="false"/>
     </production>
   </rule>
   <rule name="subscript-expression">
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="["/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="expression-list" optional="false"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
   </rule>
   <rule name="forced-value-expression">
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="!"/>
+      <keyword token="!" optional="false"/>
     </production>
   </rule>
   <rule name="optional-chaining-expression">
     <production>
       <rule_reference ruleName="postfix-expression" optional="false"/>
-      <keyword token="?"/>
+      <keyword token="?" optional="false"/>
     </production>
   </rule>
   <rule name="identifier">
@@ -2313,10 +2313,10 @@
       <rule_reference ruleName="identifier-characters" optional="true"/>
     </production>
     <production>
-      <keyword token="`"/>
+      <keyword token="`" optional="false"/>
       <rule_reference ruleName="identifier-head" optional="false"/>
       <rule_reference ruleName="identifier-characters" optional="true"/>
-      <keyword token="`"/>
+      <keyword token="`" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="implicit-parameter-name" optional="false"/>
@@ -2328,7 +2328,7 @@
     </production>
     <production>
       <rule_reference ruleName="identifier" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="identifier-list" optional="false"/>
     </production>
   </rule>
@@ -2340,7 +2340,7 @@
       </literal>
     </production>
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
     <production>
       <literal>
@@ -2472,7 +2472,7 @@
   </rule>
   <rule name="implicit-parameter-name">
     <production>
-      <keyword token="$"/>
+      <keyword token="$" optional="false"/>
       <rule_reference ruleName="decimal-digits" optional="false"/>
     </production>
   </rule>
@@ -2492,25 +2492,25 @@
   </rule>
   <rule name="numeric-literal">
     <production>
-      <keyword token="-"/>
+      <keyword token="-" optional="true"/>
       <rule_reference ruleName="integer-literal" optional="false"/>
     </production>
     <production>
-      <keyword token="-"/>
+      <keyword token="-" optional="true"/>
       <rule_reference ruleName="floating-point-literal" optional="false"/>
     </production>
   </rule>
   <rule name="boolean-literal">
     <production>
-      <keyword token="true"/>
+      <keyword token="true" optional="false"/>
     </production>
     <production>
-      <keyword token="false"/>
+      <keyword token="false" optional="false"/>
     </production>
   </rule>
   <rule name="nil-literal">
     <production>
-      <keyword token="nil"/>
+      <keyword token="nil" optional="false"/>
     </production>
   </rule>
   <rule name="integer-literal">
@@ -2529,7 +2529,7 @@
   </rule>
   <rule name="binary-literal">
     <production>
-      <keyword token="0b"/>
+      <keyword token="0b" optional="false"/>
       <rule_reference ruleName="binary-digit" optional="false"/>
       <rule_reference ruleName="binary-literal-characters" optional="true"/>
     </production>
@@ -2547,7 +2547,7 @@
       <rule_reference ruleName="binary-digit" optional="false"/>
     </production>
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="binary-literal-characters">
@@ -2558,7 +2558,7 @@
   </rule>
   <rule name="octal-literal">
     <production>
-      <keyword token="0o"/>
+      <keyword token="0o" optional="false"/>
       <rule_reference ruleName="octal-digit" optional="false"/>
       <rule_reference ruleName="octal-literal-characters" optional="true"/>
     </production>
@@ -2575,7 +2575,7 @@
       <rule_reference ruleName="octal-digit" optional="false"/>
     </production>
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="octal-literal-characters">
@@ -2608,7 +2608,7 @@
       <rule_reference ruleName="decimal-digit" optional="false"/>
     </production>
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="decimal-literal-characters">
@@ -2619,7 +2619,7 @@
   </rule>
   <rule name="hexadecimal-literal">
     <production>
-      <keyword token="0x"/>
+      <keyword token="0x" optional="false"/>
       <rule_reference ruleName="hexadecimal-digit" optional="false"/>
       <rule_reference ruleName="hexadecimal-literal-characters" optional="true"/>
     </production>
@@ -2638,7 +2638,7 @@
       <rule_reference ruleName="hexadecimal-digit" optional="false"/>
     </production>
     <production>
-      <keyword token="_"/>
+      <keyword token="_" optional="false"/>
     </production>
   </rule>
   <rule name="hexadecimal-literal-characters">
@@ -2661,7 +2661,7 @@
   </rule>
   <rule name="decimal-fraction">
     <production>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="decimal-literal" optional="false"/>
     </production>
   </rule>
@@ -2674,7 +2674,7 @@
   </rule>
   <rule name="hexadecimal-fraction">
     <production>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="hexadecimal-digit" optional="false"/>
       <rule_reference ruleName="hexadecimal-literal-characters" optional="true"/>
     </production>
@@ -2688,26 +2688,26 @@
   </rule>
   <rule name="floating-point-e">
     <production>
-      <keyword token="e"/>
+      <keyword token="e" optional="false"/>
     </production>
     <production>
-      <keyword token="E"/>
+      <keyword token="E" optional="false"/>
     </production>
   </rule>
   <rule name="floating-point-p">
     <production>
-      <keyword token="p"/>
+      <keyword token="p" optional="false"/>
     </production>
     <production>
-      <keyword token="P"/>
+      <keyword token="P" optional="false"/>
     </production>
   </rule>
   <rule name="sign">
     <production>
-      <keyword token="+"/>
+      <keyword token="+" optional="false"/>
     </production>
     <production>
-      <keyword token="-"/>
+      <keyword token="-" optional="false"/>
     </production>
   </rule>
   <rule name="string-literal">
@@ -2720,9 +2720,9 @@
   </rule>
   <rule name="static-string-literal">
     <production>
-      <keyword token="\&quot;"/>
+      <keyword token="\&quot;" optional="false"/>
       <rule_reference ruleName="quoted-text" optional="true"/>
-      <keyword token="\&quot;"/>
+      <keyword token="\&quot;" optional="false"/>
     </production>
   </rule>
   <rule name="quoted-text">
@@ -2748,9 +2748,9 @@
   </rule>
   <rule name="interpolated-string-literal">
     <production>
-      <keyword token="\&quot;"/>
+      <keyword token="\&quot;" optional="false"/>
       <rule_reference ruleName="interpolated-text" optional="true"/>
-      <keyword token="\&quot;"/>
+      <keyword token="\&quot;" optional="false"/>
     </production>
   </rule>
   <rule name="interpolated-text">
@@ -2761,40 +2761,40 @@
   </rule>
   <rule name="interpolated-text-item">
     <production>
-      <keyword token="\\("/>
+      <keyword token="\\(" optional="false"/>
       <rule_reference ruleName="quoted-text-item" optional="true"/>
       <rule_reference ruleName="expression" optional="false"/>
       <rule_reference ruleName="quoted-text-item" optional="true"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="escaped-character">
     <production>
-      <keyword token="\\0"/>
+      <keyword token="\\0" optional="false"/>
     </production>
     <production>
-      <keyword token="\\\\"/>
+      <keyword token="\\\\" optional="false"/>
     </production>
     <production>
-      <keyword token="\\t"/>
+      <keyword token="\\t" optional="false"/>
     </production>
     <production>
-      <keyword token="\\n"/>
+      <keyword token="\\n" optional="false"/>
     </production>
     <production>
-      <keyword token="\\r"/>
+      <keyword token="\\r" optional="false"/>
     </production>
     <production>
-      <keyword token="\\\&quot;"/>
+      <keyword token="\\\&quot;" optional="false"/>
     </production>
     <production>
-      <keyword token="\\'"/>
+      <keyword token="\\'" optional="false"/>
     </production>
     <production>
-      <keyword token="\\u"/>
-      <keyword token="{"/>
+      <keyword token="\\u" optional="false"/>
+      <keyword token="{" optional="false"/>
       <rule_reference ruleName="unicode-scalar-digits" optional="false"/>
-      <keyword token="}"/>
+      <keyword token="}" optional="false"/>
     </production>
   </rule>
   <rule name="unicode-scalar-digits">
@@ -2818,46 +2818,46 @@
   </rule>
   <rule name="operator-head">
     <production>
-      <keyword token="/"/>
+      <keyword token="/" optional="false"/>
     </production>
     <production>
-      <keyword token="="/>
+      <keyword token="=" optional="false"/>
     </production>
     <production>
-      <keyword token="-"/>
+      <keyword token="-" optional="false"/>
     </production>
     <production>
-      <keyword token="+"/>
+      <keyword token="+" optional="false"/>
     </production>
     <production>
-      <keyword token="!"/>
+      <keyword token="!" optional="false"/>
     </production>
     <production>
-      <keyword token="*"/>
+      <keyword token="*" optional="false"/>
     </production>
     <production>
-      <keyword token="%"/>
+      <keyword token="%" optional="false"/>
     </production>
     <production>
-      <keyword token="&lt;"/>
+      <keyword token="&lt;" optional="false"/>
     </production>
     <production>
-      <keyword token="&gt;"/>
+      <keyword token="&gt;" optional="false"/>
     </production>
     <production>
-      <keyword token="&amp;"/>
+      <keyword token="&amp;" optional="false"/>
     </production>
     <production>
-      <keyword token="|"/>
+      <keyword token="|" optional="false"/>
     </production>
     <production>
-      <keyword token="^"/>
+      <keyword token="^" optional="false"/>
     </production>
     <production>
-      <keyword token="~"/>
+      <keyword token="~" optional="false"/>
     </production>
     <production>
-      <keyword token="?"/>
+      <keyword token="?" optional="false"/>
     </production>
     <production>
       <literal>
@@ -2979,12 +2979,12 @@
   </rule>
   <rule name="dot-operator-head">
     <production>
-      <keyword token=".."/>
+      <keyword token=".." optional="false"/>
     </production>
   </rule>
   <rule name="dot-operator-character">
     <production>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="operator-character" optional="false"/>
@@ -3042,7 +3042,7 @@
   </rule>
   <rule name="type-annotation">
     <production>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="attributes" optional="true"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
@@ -3055,7 +3055,7 @@
     <production>
       <rule_reference ruleName="type-name" optional="false"/>
       <rule_reference ruleName="generic-argument-clause" optional="true"/>
-      <keyword token="."/>
+      <keyword token="." optional="false"/>
       <rule_reference ruleName="type-identifier" optional="false"/>
     </production>
   </rule>
@@ -3066,15 +3066,15 @@
   </rule>
   <rule name="tuple-type">
     <production>
-      <keyword token="("/>
+      <keyword token="(" optional="false"/>
       <rule_reference ruleName="tuple-type-body" optional="true"/>
-      <keyword token=")"/>
+      <keyword token=")" optional="false"/>
     </production>
   </rule>
   <rule name="tuple-type-body">
     <production>
       <rule_reference ruleName="tuple-type-element-list" optional="false"/>
-      <keyword token="..."/>
+      <keyword token="..." optional="true"/>
     </production>
   </rule>
   <rule name="tuple-type-element-list">
@@ -3083,18 +3083,18 @@
     </production>
     <production>
       <rule_reference ruleName="tuple-type-element" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="tuple-type-element-list" optional="false"/>
     </production>
   </rule>
   <rule name="tuple-type-element">
     <production>
       <rule_reference ruleName="attributes" optional="true"/>
-      <keyword token="inout"/>
+      <keyword token="inout" optional="true"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
     <production>
-      <keyword token="inout"/>
+      <keyword token="inout" optional="true"/>
       <rule_reference ruleName="element-name" optional="false"/>
       <rule_reference ruleName="type-annotation" optional="false"/>
     </production>
@@ -3107,51 +3107,51 @@
   <rule name="function-type">
     <production>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="throws"/>
-      <keyword token="-&gt;"/>
+      <keyword token="throws" optional="true"/>
+      <keyword token="-&gt;" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="rethrows"/>
-      <keyword token="-&gt;"/>
+      <keyword token="rethrows" optional="false"/>
+      <keyword token="-&gt;" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
     </production>
   </rule>
   <rule name="array-type">
     <production>
-      <keyword token="["/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
   </rule>
   <rule name="dictionary-type">
     <production>
-      <keyword token="["/>
+      <keyword token="[" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="]"/>
+      <keyword token="]" optional="false"/>
     </production>
   </rule>
   <rule name="optional-type">
     <production>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="?"/>
+      <keyword token="?" optional="false"/>
     </production>
   </rule>
   <rule name="implicitly-unwrapped-optional-type">
     <production>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="!"/>
+      <keyword token="!" optional="false"/>
     </production>
   </rule>
   <rule name="protocol-composition-type">
     <production>
-      <keyword token="protocol"/>
-      <keyword token="&lt;"/>
+      <keyword token="protocol" optional="false"/>
+      <keyword token="&lt;" optional="false"/>
       <rule_reference ruleName="protocol-identifier-list" optional="true"/>
-      <keyword token="&gt;"/>
+      <keyword token="&gt;" optional="false"/>
     </production>
   </rule>
   <rule name="protocol-identifier-list">
@@ -3160,7 +3160,7 @@
     </production>
     <production>
       <rule_reference ruleName="protocol-identifier" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="protocol-identifier-list" optional="false"/>
     </production>
   </rule>
@@ -3172,28 +3172,28 @@
   <rule name="metatype-type">
     <production>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="."/>
-      <keyword token="Type"/>
+      <keyword token="." optional="false"/>
+      <keyword token="Type" optional="false"/>
     </production>
     <production>
       <rule_reference ruleName="type" optional="false"/>
-      <keyword token="."/>
-      <keyword token="Protocol"/>
+      <keyword token="." optional="false"/>
+      <keyword token="Protocol" optional="false"/>
     </production>
   </rule>
   <rule name="type-inheritance-clause">
     <production>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="class-requirement" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="type-inheritance-list" optional="false"/>
     </production>
     <production>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="class-requirement" optional="false"/>
     </production>
     <production>
-      <keyword token=":"/>
+      <keyword token=":" optional="false"/>
       <rule_reference ruleName="type-inheritance-list" optional="false"/>
     </production>
   </rule>
@@ -3203,13 +3203,13 @@
     </production>
     <production>
       <rule_reference ruleName="type-identifier" optional="false"/>
-      <keyword token=","/>
+      <keyword token="," optional="false"/>
       <rule_reference ruleName="type-inheritance-list" optional="false"/>
     </production>
   </rule>
   <rule name="class-requirement">
     <production>
-      <keyword token="class"/>
+      <keyword token="class" optional="false"/>
     </production>
   </rule>
 </rules>
